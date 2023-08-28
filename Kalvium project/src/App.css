@@ -1,9 +1,9 @@
 /* App.css */
 .attendance-app {
-  font-family: 'Times New Roman', Times, serif, sans-serif;
+  font-family: "Times New Roman", Times, serif, sans-serif;
   text-align: center;
   margin: 10px;
-  background: #FAFAFA;
+  background: #fafafa;
   color: #000000;
   min-height: 100vh;
   display: flex;
@@ -12,7 +12,7 @@
 }
 
 .attendance-app {
-  background-image: url('background.jpeg');
+  background-image: url("background.jpeg");
   background-size: 11%;
   background-repeat: no-repeat;
   background-position: top right;
@@ -84,7 +84,7 @@ ul {
 
 button {
   padding: 5px 10px;
-  background-color: #CB3434;
+  background-color: #cb3434;
   color: white;
   border: none;
   border-radius: 3px;
@@ -94,5 +94,5 @@ button {
 }
 
 button:hover {
-  background-color: #EF3837;
+  background-color: #ef3837;
 }

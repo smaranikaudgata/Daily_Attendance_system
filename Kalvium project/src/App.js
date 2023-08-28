@@ -1,18 +1,22 @@
-import React, { useState } from 'react';
-import './App.css';
+import React, { useState } from "react";
+import "./App.css";
 
 function AttendanceApp() {
   const [students, setStudents] = useState([]);
-  const [newStudentName, setNewStudentName] = useState('');
+  const [newStudentName, setNewStudentName] = useState("");
   const [selectedStudents, setSelectedStudents] = useState([]);
   const [editingStudent, setEditingStudent] = useState(null);
 
   const addStudent = () => {
-    if (newStudentName.trim() !== '') {
+    if (newStudentName.trim() !== "") {
       const newStudentId = students.length + 1;
-      const newStudent = { id: newStudentId, name: newStudentName, attendance: false };
+      const newStudent = {
+        id: newStudentId,
+        name: newStudentName,
+        attendance: false
+      };
       setStudents([...students, newStudent]);
-      setNewStudentName('');
+      setNewStudentName("");
     }
   };
 
@@ -32,14 +36,18 @@ function AttendanceApp() {
   };
 
   const deleteSelectedStudents = () => {
-    const updatedStudents = students.filter((student) => !selectedStudents.includes(student.id));
+    const updatedStudents = students.filter(
+      (student) => !selectedStudents.includes(student.id)
+    );
     setStudents(updatedStudents);
     setSelectedStudents([]);
     setEditingStudent(null);
   };
 
   const deleteStudent = (studentId) => {
-    const updatedStudents = students.filter((student) => student.id !== studentId);
+    const updatedStudents = students.filter(
+      (student) => student.id !== studentId
+    );
     setStudents(updatedStudents);
     setSelectedStudents(selectedStudents.filter((id) => id !== studentId));
     setEditingStudent(null);
@@ -57,7 +65,9 @@ function AttendanceApp() {
   const saveEditedName = () => {
     if (editingStudent) {
       const updatedStudents = students.map((student) =>
-        student.id === editingStudent.id ? { ...student, name: editingStudent.name } : student
+        student.id === editingStudent.id
+          ? { ...student, name: editingStudent.name }
+          : student
       );
       setStudents(updatedStudents);
       setEditingStudent(null);
@@ -71,14 +81,22 @@ function AttendanceApp() {
         <h2>Student List</h2>
         <ul>
           {students.map((student) => (
-            <li key={student.id} className={`student-item ${student.attendance ? 'attended' : ''}`}>
+            <li
+              key={student.id}
+              className={`student-item ${student.attendance ? "attended" : ""}`}
+            >
               <div className="student-name">
                 {editingStudent?.id === student.id ? (
                   <div>
                     <input
                       type="text"
                       value={editingStudent.name}
-                      onChange={(e) => setEditingStudent({ ...editingStudent, name: e.target.value })}
+                      onChange={(e) =>
+                        setEditingStudent({
+                          ...editingStudent,
+                          name: e.target.value
+                        })
+                      }
                     />
                     <button onClick={saveEditedName}>Save</button>
                   </div>
@@ -94,8 +112,12 @@ function AttendanceApp() {
                 />
                 {!student.attendance && (
                   <div>
-                    <button onClick={() => markAttendance(student.id)}>Present</button>
-                    <button onClick={() => editStudentName(student.id)}>Edit</button>
+                    <button onClick={() => markAttendance(student.id)}>
+                      Present
+                    </button>
+                    <button onClick={() => editStudentName(student.id)}>
+                      Edit
+                    </button>
                   </div>
                 )}
               </div>
